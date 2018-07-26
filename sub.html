@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sub Frame</title>
+</head>
+<body>
+    <h2>Sub Frame</h2>
+    <ul>
+        <li><a href="#" id="anchor">sub.html</a></li>
+        <li><a href="/sub.html?hogehoge" target="ifrm">sub.html : ifrm</a></li>
+        <li><a href="/sub.html?hogehoge" target="_parent">sub.html : parent</a></li>
+    </ul>
+    <input type="text" value="sub frame value" id="target">
+    <button id="messanger">parnet</button>
+    <script>
+        const anchor = document.getElementById("anchor");
+        anchor.onclick = function() {
+            location.href = "/sub.html?hogehoge";
+        }
+        const messanger = document.getElementById("messanger");
+        messanger.onclick = function() {
+            console.log(parent.document);
+        }
+    </script>
+</body>
+</html>

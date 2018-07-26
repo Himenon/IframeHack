@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Frame</title>
+    <style>
+        #subFrame {
+            height: 256px;
+            width: 256px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Main Frame</h1>
+        <button id="getSubFrameValue">取得</button>
+        <input type="text" value="" id="answer" />
+    </div>
+    <iframe src="/sub.html" id="subFrame" height="500px"></iframe>
+    <script type="text/javascript">
+        const iframe = document.getElementById("subFrame");
+        const btn = document.getElementById("getSubFrameValue");
+        const answer = document.getElementById("answer");
+        const overlay = document.getElementById("overlay");
+
+        iframe.onload = function(element) {
+            console.log(this.src);
+        }
+
+        function getSubFrameValue() {
+            console.log("さわってますねー");
+            const contentDocument = iframe.contentDocument || iframe.contentWindow.document;
+            const target = contentDocument.getElementById("target");
+            answer.value = target.value;
+        }
+        
+        btn.onclick = getSubFrameValue
+        window.onload = function() {
+            console.log("設定");
+            const contentDocument = iframe.contentDocument || iframe.contentWindow.document;
+            contentDocument.onclick = getSubFrameValue;
+            console.log(contentDocument);
+        }
+    </script>
+</body>
+</html>
