@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sub Frame</title>
+    <link rel="stylesheet" href="/sub.css">
 </head>
 <body>
-    <h2>Sub Frame</h2>
-    <ul>
-        <li><a href="#" id="anchor">sub.html</a></li>
-        <li><a href="/sub.html?hogehoge" target="ifrm">sub.html : ifrm</a></li>
-        <li><a href="/sub.html?hogehoge" target="_parent">sub.html : parent</a></li>
-    </ul>
-    <input type="text" value="sub frame value" id="target">
-    <button id="messanger">parnet</button>
+    <div id="wrapper">
+        <h2>Sub Frame</h2>
+        <ul>
+            <li><a href="#" id="anchor">sub.html</a></li>
+            <li><a href="/sub.html?hogehoge" target="ifrm">sub.html : ifrm</a></li>
+            <li><a href="/sub.html?hogehoge" target="_parent">sub.html : parent</a></li>
+        </ul>
+        <input type="text" value="sub frame value" id="target">
+        <button id="messanger">parnet</button>
+    </div>
     <script>
         const anchor = document.getElementById("anchor");
         anchor.onclick = function() {
@@ -25,5 +28,6 @@
             console.log(parent.document);
         }
     </script>
+    <script>monitorEvents(document.body);</script>
 </body>
 </html>

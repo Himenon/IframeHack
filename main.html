@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Main Frame</title>
-    <style>
-        #subFrame {
-            height: 256px;
-            width: 256px;
-        }
-    </style>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
     <div>
@@ -18,9 +13,11 @@
         <button id="getSubFrameValue">取得</button>
         <input type="text" value="" id="answer" />
     </div>
-    <iframe src="/sub.html" id="subFrame" height="500px"></iframe>
+    <div id="iframe-wrapper">
+        <iframe src="/sub.html" id="sub-frame"></iframe>
+    </div>
     <script type="text/javascript">
-        const iframe = document.getElementById("subFrame");
+        const iframe = document.getElementById("sub-frame");
         const btn = document.getElementById("getSubFrameValue");
         const answer = document.getElementById("answer");
         const overlay = document.getElementById("overlay");
@@ -43,6 +40,12 @@
             contentDocument.onclick = getSubFrameValue;
             console.log(contentDocument);
         }
+    </script>
+    <script src="/main.js"></script>
+    <script>
+     // 存在するウィンドウのバーの状態を変更します
+        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+        window.statusbar.visible=!window.statusbar.visible;
     </script>
 </body>
 </html>
