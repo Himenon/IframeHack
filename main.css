@@ -2,6 +2,9 @@
 #iframe-wrapper {
     width: 100%;
     height: 500px;
-    border: 1px solid black;
-    overflow-y: scroll;
+    border: 1px solid rgb(196, 108, 108);
+}
+
+#sub-frame {
+    padding-bottom: 100px;
 }
