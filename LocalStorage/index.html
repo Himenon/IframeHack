@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="/main.js"></script>
   <style>
     #target-iframe {
       width: 960px;
@@ -16,6 +15,11 @@
 <body>
   <h1><a href="http://localhost:8004/index.html">http://localhost:8004/index.html</a> です</h1>
   <p>js: /main.js を見ています</p>
+  <ul>
+    <li><button id="local-write">iframe内部のドメインのlocalStorageに対して書き込みを行う</button></li>
+    <li><button id="local-read">iframe内部のドメインのlocalStorageから読み込みを行う</button></li>
+  </ul>
   <iframe src="http://localhost:8005/inner.html" id="target-iframe"></iframe>
+  <script src="/main.js"></script>
 </body>
 </html>
