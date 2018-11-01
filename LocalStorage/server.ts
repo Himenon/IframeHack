@@ -1,42 +1,26 @@
 import * as express from "express";
 import * as fs from "fs";
-import * as url from "url";
-import * as path from "path";
+import * as https from 'https';
 
 const app = express();
-const cache: { [name: string]: undefined | string } = {};
+const options = {
+  key:  fs.readFileSync('server_key.pem'),
+  cert: fs.readFileSync('server_crt.pem'),
+};
 
-// TODO Error処理
-app.get(
-  "/*",
-  (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    const { pathname } = url.parse(req.url);
-    if (!pathname) {
-      res.send("該当パスは存在しません");
-      res.end();
-      return;
-    }
-    if (!cache[pathname]) {
-      const filepath =
-        pathname === "/"
-          ? path.join(__dirname, "index.html")
-          : path.join(__dirname, pathname);
-      if (fs.existsSync(filepath) && fs.statSync(filepath).isFile()) {
-        cache[pathname] = fs.readFileSync(filepath, { encoding: "utf8" });
-      } else {
-        res.send("該当パスは存在しません");
-        res.end();
-        return;
-      }
-    }
-    res.send(cache[pathname]);
-    cache[pathname] = undefined; // キャッシュさせないとき
-    res.end();
-  }
-);
+app.use(express.static('./'));
 
+const server = https.createServer(options, app);
 const portNumber: number = Number(process.argv[2]);
 
-app.listen(portNumber, () =>
-  process.stdout.write(`Example app listening on port ${portNumber}!\n`)
-);
+const isHttp: boolean = process.argv[3] === "http";
+
+if (isHttp) {
+  app.listen(portNumber, () =>
+    process.stdout.write(`Open http://localhost:${portNumber}!\n`)
+  );
+} else {
+  server.listen(portNumber, () =>
+    process.stdout.write(`Open https://localhost:${portNumber}!\n`)
+  );
+}

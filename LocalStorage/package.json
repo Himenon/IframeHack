@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "start": "run-p server1 server2",
-    "server1": "ts-node ./server.ts 8004",
-    "server2": "ts-node ./server.ts 8005"
+    "start": "run-p server1 server2 server3",
+    "server1": "ts-node ./server.ts 8003 http",
+    "server2": "ts-node ./server.ts 8004",
+    "server3": "ts-node ./server.ts 8005"
   },
   "dependencies": {
     "express": "^4.16.4"
