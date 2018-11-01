@@ -1,0 +1,51 @@
+{
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": [
+      "es6",
+      "dom",
+      "esnext"
+    ],
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "composite": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "baseUrl": "./",
+    "typeRoots": [
+      "./typings",
+      "./node_modules/@types"
+    ]
+  },
+  "include": [
+    "server.ts"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "jest"
+  ],
+  "ordered-imports": [
+    true,
+    {
+      "import-sources-order": "any",
+      "named-imports-order": "case-insensitive"
+    }
+  ]
+}
